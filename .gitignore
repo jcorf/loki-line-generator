@@ -1,3 +1,7 @@
 *.ipynb
 .ipynb_checkpoints/*
 .idea
+__pycache__/script_cleaner.cpython-39.pyc
+__pycache__/script_structure.cpython-39.pyc
+__pycache__/script_utils.cpython-39.pyc
+__pycache__/*
