@@ -79,6 +79,14 @@ class ScriptStructure:
     def get_all_places(self):
         return self.place_ids
 
+    def get_info_for(self, name):
+        info = defaultdict(list)
+        info["expressions"] = self.expressions[name]
+        info["actions"] = self.actions[name]
+        info["dialogue"] = self.dialogue[name]
+        info["places"] = self.places[name]
+
+        return info
 
 def combine_scripts(*episodes: ScriptCleaner):
     structure = ScriptStructure()
@@ -91,5 +99,13 @@ def combine_scripts(*episodes: ScriptCleaner):
                               ep.get_actions_of(character),
                               ep.get_lines_of(character),
                               ep.get_places_of(character))
+
+        structure.add_set("None",
+                          ep.get_expressions_of("None"),
+                          ep.get_actions_of("None"),
+                          ep.get_lines_of("None"),
+                          ep.get_places_of("None"))
+
+
 
     return structure
