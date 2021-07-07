@@ -1,10 +1,12 @@
-from lokiconnector import LokiConnector
+from loki_connector import LokiConnector
 from script_cleaner import ScriptCleaner
 
-global line_id_counter, scene_counter
+global scene_counter, line_id_counter
 
+line_id_counter = 1
 
 def enter_info_into_db(episode: ScriptCleaner, loki: LokiConnector):
+    global line_id_counter
     print("Opening Connection \t.... ")
 
     try:
@@ -88,10 +90,10 @@ def enter_info_into_db(episode: ScriptCleaner, loki: LokiConnector):
         print(e)
         print("\n..... Closing Connection")
 
-if __name__ == "__main__":
+def run():
     global scene_counter, line_id_counter
     scene_counter = 1
-
+    line_id_counter = 1
 
     ep1 = ScriptCleaner("https://transcripts.fandom.com/wiki/Glorious_Purpose")
     print("cleaned episode 1")
@@ -103,9 +105,6 @@ if __name__ == "__main__":
     ep4 = ScriptCleaner("https://transcripts.fandom.com/wiki/The_Nexus_Event")
 
     print("cleaned episode 4")
-
-
-    line_id_counter = 1
 
     loki = LokiConnector()
     loki.exec_sql_file()
@@ -128,4 +127,6 @@ if __name__ == "__main__":
 
     loki.close()
 
+
+run()
 
