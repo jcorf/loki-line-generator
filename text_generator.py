@@ -2,6 +2,8 @@ from nltk.tokenize import regexp_tokenize
 from nltk import TrigramCollocationFinder
 from random import choices, choice
 import re
+from collections import Counter
+
 
 class TextGenerator:
     def __init__(self, dialogue_list):
