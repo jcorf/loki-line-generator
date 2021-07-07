@@ -98,7 +98,7 @@ class LokiConnector:
     """sets up the database"""
 
     def exec_sql_file(self):
-        sql_file = "/Users/juliecorfman/lokigenerator/loki_database.sql"
+        sql_file = "/assets/loki_database.sql"
 
         print("\n[INFO] Executing SQL script file: '%s'" % (sql_file))
         statement = ""
